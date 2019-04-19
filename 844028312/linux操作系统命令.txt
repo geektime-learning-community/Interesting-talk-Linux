@@ -1,0 +1,43 @@
+一.passwd  修改密码
+   创建的用户放在/etc/passwd文件里
+   root:x:0:       x代表密码  接下来是用户ID和组ID
+二.userAdd 添加用户
+
+三.cd  切换目录  ls 浏览文件
+
+四.ls -l  (drwxr-xr-x  6  root  root  4096  Oct 20  2017 apt)  第一个字符是文件类型： -表示普通文件  d表示目录  
+接下来三个为一组rwx 读写执行  代表用户权限，文件所属组权限以及其他用户的权限
+chmod  711 hosts  改变权限
+第二个字段是硬链接的数目
+第三个是所属用户，第四个是所属组,第五个文件大小  ，第六个文件被修改日期
+chown 改变所属用户  chgrp改变所属组
+
+五.rpm -i +软件名称   dpkg - i (安装软件）
+rmp -qa 和  dpkg -l 查看软件列表
+rpm -qa | grep  jdk ( |  是管道，用于连接两个程序，把rpm -qa 的输出放到管道里。作为grep的输入，grep将搜索带有关键字的jdk的行，并输出来）
+和dpkg -l | grep jdk
+rpm -qa | grep more 和 rpm -qa | grep less 分页输出
+more 只能往后翻  less能前后翻，输入q 退出
+rpm -e 和dpkg -r 删除软件
+
+六。yum search jdk 搜索软件
+yum install 安装软件
+配置软件从哪里下载  /etc/yum.repos.d/CentOS-Base.repo
+(原理都是先下载再安装，然后在相应的文件中配置）
+
+七。wget 下载文件  tar xvzf 解压
+
+八。配置环境通过  export 当前回话有效  
+.bashrc   每次登陆的时候，都会运行这个文件
+
+九。运行文件 ，文件有x执行权限  ，通过./文件名运行
+nohup  filename & 后台运行   nohup filename >out.file 2>&1 & (1代表标准输出 2代表标准错误输出  2>&1代表2和1合并输出）
+ps -ef | grep 关键字 | awk '{print $2}'  | xargs kill -9
+awk '{print $2}'  指第二列内容   xargs kill -9  通过xargs传递给kill -9 给运行程序发一个信号
+
+服务运行  systemctl start mysql 启动mysql 
+systemctl enable mysql 设置开机启动（在/lib/systemd/sysytem目录下创建一个XXX.service）
+
+
+十.shutdown -h now 关机   reboot重启
+
